@@ -10,7 +10,9 @@ fi
 
 
 # make backup
-/bin/cp $bashrc $bashrc.backup
+if [ -f $bashrc ]; then
+  /bin/cp $bashrc $bashrc.backup
+fi
 
 # check to see if installer has run before
 /bin/egrep "COMP465TOOLS" $bashrc 2>&1 > /dev/null
