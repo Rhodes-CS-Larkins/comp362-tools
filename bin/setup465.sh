@@ -56,7 +56,7 @@ esac
 /bin/cp $bashrc $bashrc.backup
 
 # update with new lab number
-/bin/sed -e "s/COMP465LAB=lab[1-6]/COMP465LAB=$lab/" < $bashrc > /tmp/setup465.$$
+sed -e "s/COMP465LAB=lab[1-6]/COMP465LAB=$lab/" < $bashrc > /tmp/setup465.$$
 /bin/mv /tmp/setup465.$$ $bashrc
 
 # remind user to refresh environment settings
