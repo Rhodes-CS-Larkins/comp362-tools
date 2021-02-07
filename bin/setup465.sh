@@ -1,5 +1,9 @@
 #!/bin/bash
-bashrc=$HOME/.bashrc
+if [ "$SHELL" = "/bin/bash" ]; then
+  bashrc=$HOME/.bashrc
+else
+  bashrc=$HOME/.zshrc
+fi
 
 usage() {
   /bin/cat << EOT
@@ -58,5 +62,9 @@ esac
 # remind user to refresh environment settings
 echo "setup complete. you need to update your environment with the new settings. pick one:"
 echo "    1. log out / log back in again (or start a new terminal)"
-echo "    2. type the command '. ~/.bashrc' to reload without logging out"
+if [ "$SHELL" = "/bin/bash" ]; then
+  echo "    2. type the command '. ~/.bashrc' to reload without logging out"
+else
+  echo "    2. type the command '. ~/.zshrc' to reload without logging out"
+fi
 exit 0
