@@ -15,7 +15,7 @@ if [ -f $bashrc ]; then
 fi
 
 # check to see if installer has run before
-/bin/egrep "COMP465TOOLS" $bashrc 2>&1 > /dev/null
+egrep "COMP465TOOLS" $bashrc 2>&1 > /dev/null
 if [ $? -eq 0 ]; then
   # found - discard earlier info
   echo "removing existing compiler environment setup"
