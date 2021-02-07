@@ -2,7 +2,12 @@
 
 curdir=`pwd`
 toolroot=`echo $curdir | sed -e "s!/bin!!"`
-bashrc=$HOME/.bashrc
+if [ "$SHELL" = "/bin/bash" ]; then
+  bashrc=$HOME/.bashrc
+else
+  bashrc=$HOME/.zshrc
+fi
+
 
 # make backup
 /bin/cp $bashrc $bashrc.backup
