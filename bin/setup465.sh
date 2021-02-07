@@ -9,7 +9,7 @@ EOT
 }
 
 # check to see if installer has been run
-/bin/egrep "COMP465LAB" $bashrc 2>&1 > /dev/null
+egrep "COMP465LAB" $bashrc 2>&1 > /dev/null
 if [ $? -ne 0 ]; then
   # not found
   echo "it looks like your COMP 465 environment isn't setup yet. please run install.sh first"
