@@ -11,7 +11,7 @@ fi
 
 # make backup
 if [ -f $bashrc ]; then
-  /bin/cp $bashrc $bashrc.backup
+  cp $bashrc $bashrc.backup
 fi
 
 # check to see if installer has run before
@@ -19,12 +19,12 @@ egrep "COMP465TOOLS" $bashrc 2>&1 > /dev/null
 if [ $? -eq 0 ]; then
   # found - discard earlier info
   echo "removing existing compiler environment setup"
-  /bin/sed -e "/added by compiler tools/,+7d" < $bashrc > /tmp/install.$$
-  /bin/mv /tmp/install.$$ $bashrc
+  sed -e "/added by compiler tools/,+7d" < $bashrc > /tmp/install.$$
+  mv /tmp/install.$$ $bashrc
 fi
 
 # update .bashrc with correct environment info
-/bin/cat << EOT >> $bashrc
+cat << EOT >> $bashrc
 
 # added by compiler tools installer
 COMP465TOOLS="$toolroot"
