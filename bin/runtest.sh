@@ -51,7 +51,7 @@ if [ ! -d $labroot/output/ref ]; then
   do
     echo -n "test$i.tig "
     if [ $redir -eq 1 ]; then
-      java $mainclass $toolroot/testcases/test$i.tig > $labroot/output/ref/test$i.tig
+      java $mainclass $toolroot/testcases/test$i.tig > $labroot/output/ref/test$i.tig 2>&1
     else
       java $mainclass $toolroot/testcases/test$i.tig
       mv $toolroot/testcases/test$i.s $labroot/output/ref/test$i.tig
@@ -60,7 +60,7 @@ if [ ! -d $labroot/output/ref ]; then
 
   echo -n "merge.tig "
   if [ $redir -eq 1 ]; then
-    java $mainclass $toolroot/testcases/merge.tig > $labroot/output/ref/merge.tig
+    java $mainclass $toolroot/testcases/merge.tig > $labroot/output/ref/merge.tig 2>&1
   else
     java $mainclass $toolroot/testcases/merge.tig
     mv $toolroot/testcases/merge.s $labroot/output/ref/merge.tig
@@ -68,7 +68,7 @@ if [ ! -d $labroot/output/ref ]; then
 
   echo "queens.tig"
   if [ $redir -eq 1 ]; then
-    java $mainclass $toolroot/testcases/queens.tig > $labroot/output/ref/queens.tig
+    java $mainclass $toolroot/testcases/queens.tig > $labroot/output/ref/queens.tig 2>&1
   else
     java $mainclass $toolroot/testcases/queens.tig
     mv $toolroot/testcases/queens.s $labroot/output/ref/queens.tig
