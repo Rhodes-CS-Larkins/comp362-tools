@@ -51,7 +51,7 @@ if [ ! -d $labroot/output/ref ]; then
   do
     echo -n "test$i.tig "
     if [ $redir -eq 1 ]; then
-      java $mainclass $toolroot/testcases/test$i.tig > $labroot/output/ref/test$i.tig
+      java $mainclass $toolroot/testcases/test$i.tig > $labroot/output/ref/test$i.tig 2>&1
     else
       java $mainclass $toolroot/testcases/test$i.tig
       mv $toolroot/testcases/test$i.s $labroot/output/ref/test$i.tig
@@ -60,7 +60,7 @@ if [ ! -d $labroot/output/ref ]; then
 
   echo -n "merge.tig "
   if [ $redir -eq 1 ]; then
-    java $mainclass $toolroot/testcases/merge.tig > $labroot/output/ref/merge.tig
+    java $mainclass $toolroot/testcases/merge.tig > $labroot/output/ref/merge.tig 2>&1
   else
     java $mainclass $toolroot/testcases/merge.tig
     mv $toolroot/testcases/merge.s $labroot/output/ref/merge.tig
@@ -68,7 +68,7 @@ if [ ! -d $labroot/output/ref ]; then
 
   echo "queens.tig"
   if [ $redir -eq 1 ]; then
-    java $mainclass $toolroot/testcases/queens.tig > $labroot/output/ref/queens.tig
+    java $mainclass $toolroot/testcases/queens.tig > $labroot/output/ref/queens.tig 2>&1
   else
     java $mainclass $toolroot/testcases/queens.tig
     mv $toolroot/testcases/queens.s $labroot/output/ref/queens.tig
@@ -111,13 +111,29 @@ fi
 
 echo "comparing $COMP465LAB output against reference compiler"
 cd $labroot/output/ref
-for i in *.tig
+for i in {1..49}
 do
-  /usr/bin/diff -c $i ../mine/$i > ../diff.$i
-  if [ ! -s ../diff.$i ]; then
-    rm -f ../diff.$i
+  /usr/bin/diff -c test$i.tig ../mine/test$i.tig > ../diff.test$i
+  if [ ! -s ../diff.test$i ]; then
+    rm -f ../diff.test$i
     echo -e "$i: [${GREEN}PASS${NC}]"
   else
     echo -e "$i: [${RED}FAIL${NC}]"
   fi
 done
+
+/usr/bin/diff -c merge.tig ../mine/merge.tig > ../diff.merge
+if [ ! -s ../diff.merge ]; then
+  rm -f ../diff.merge
+  echo -e "$i: [${GREEN}PASS${NC}]"
+else
+  echo -e "$i: [${RED}FAIL${NC}]"
+fi
+
+/usr/bin/diff -c queens.tig ../mine/queens.tig > ../diff.queens
+if [ ! -s ../diff.queens ]; then
+  rm -f ../diff.queens
+  echo -e "$i: [${GREEN}PASS${NC}]"
+else
+  echo -e "$i: [${RED}FAIL${NC}]"
+fi
