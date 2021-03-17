@@ -116,24 +116,24 @@ do
   /usr/bin/diff -c test$i.tig ../mine/test$i.tig > ../diff.test$i
   if [ ! -s ../diff.test$i ]; then
     rm -f ../diff.test$i
-    echo -e "$i: [${GREEN}PASS${NC}]"
+    echo -e "test$i: [${GREEN}PASS${NC}]"
   else
-    echo -e "$i: [${RED}FAIL${NC}]"
+    echo -e "test$i: [${RED}FAIL${NC}]"
   fi
 done
 
 /usr/bin/diff -c merge.tig ../mine/merge.tig > ../diff.merge
 if [ ! -s ../diff.merge ]; then
   rm -f ../diff.merge
-  echo -e "$i: [${GREEN}PASS${NC}]"
+  echo -e "merge: [${GREEN}PASS${NC}]"
 else
-  echo -e "$i: [${RED}FAIL${NC}]"
+  echo -e "merge: [${RED}FAIL${NC}]"
 fi
 
 /usr/bin/diff -c queens.tig ../mine/queens.tig > ../diff.queens
 if [ ! -s ../diff.queens ]; then
   rm -f ../diff.queens
-  echo -e "$i: [${GREEN}PASS${NC}]"
+  echo -e "queens: [${GREEN}PASS${NC}]"
 else
-  echo -e "$i: [${RED}FAIL${NC}]"
+  echo -e "queens: [${RED}FAIL${NC}]"
 fi
