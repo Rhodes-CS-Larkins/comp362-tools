@@ -111,13 +111,29 @@ fi
 
 echo "comparing $COMP465LAB output against reference compiler"
 cd $labroot/output/ref
-for i in *.tig
+for i in {1..49}
 do
-  /usr/bin/diff -c $i ../mine/$i > ../diff.$i
-  if [ ! -s ../diff.$i ]; then
-    rm -f ../diff.$i
-    echo -e "$i: [${GREEN}PASS${NC}]"
+  /usr/bin/diff -c test$i.tig ../mine/test$i.tig > ../diff.test$i
+  if [ ! -s ../diff.test$i ]; then
+    rm -f ../diff.test$i
+    echo -e "test$i: [${GREEN}PASS${NC}]"
   else
-    echo -e "$i: [${RED}FAIL${NC}]"
+    echo -e "test$i: [${RED}FAIL${NC}]"
   fi
 done
+
+/usr/bin/diff -c merge.tig ../mine/merge.tig > ../diff.merge
+if [ ! -s ../diff.merge ]; then
+  rm -f ../diff.merge
+  echo -e "merge: [${GREEN}PASS${NC}]"
+else
+  echo -e "merge: [${RED}FAIL${NC}]"
+fi
+
+/usr/bin/diff -c queens.tig ../mine/queens.tig > ../diff.queens
+if [ ! -s ../diff.queens ]; then
+  rm -f ../diff.queens
+  echo -e "queens: [${GREEN}PASS${NC}]"
+else
+  echo -e "queens: [${RED}FAIL${NC}]"
+fi
