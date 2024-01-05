@@ -15,7 +15,7 @@ if [ -f $bashrc ]; then
 fi
 
 # check to see if installer has run before
-egrep "COMP465TOOLS" $bashrc 2>&1 > /dev/null
+egrep "COMP362TOOLS" $bashrc 2>&1 > /dev/null
 if [ $? -eq 0 ]; then
   # found - discard earlier info
   echo "removing existing compiler environment setup"
@@ -27,11 +27,11 @@ fi
 cat << EOT >> $bashrc
 
 # added by compiler tools installer
-COMP465TOOLS="$toolroot"
-COMP465LAB=lab1
-PATH=\$PATH:\$COMP465TOOLS/bin
-CLASSPATH=.:..:\$COMP465TOOLS/../comp465-\$COMP465LAB:\$COMP465TOOLS/classes/jlex.jar:\$COMP465TOOLS/classes/java_cup.jar:\$COMP465TOOLS/classes/\$COMP465LAB.jar
-export COMP465TOOLS COMP465LAB PATH CLASSPATH
+COMP362TOOLS="$toolroot"
+COMP362LAB=lab1
+PATH=\$PATH:\$COMP362TOOLS/bin
+CLASSPATH=.:..:\$COMP362TOOLS/../comp362-\$COMP362LAB:\$COMP362TOOLS/classes/jlex.jar:\$COMP362TOOLS/classes/java_cup.jar:\$COMP362TOOLS/classes/\$COMP362LAB.jar
+export COMP362TOOLS COMP362LAB PATH CLASSPATH
 # end compilers additions
 EOT
 

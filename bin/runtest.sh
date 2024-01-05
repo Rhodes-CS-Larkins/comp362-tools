@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # environment
-toolroot=$COMP465TOOLS
-labroot=$toolroot/../comp465-$COMP465LAB
+toolroot=$COMP362TOOLS
+labroot=$toolroot/../comp362-$COMP362LAB
 redir=1
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m'
 
-case $COMP465LAB in
+case $COMP362LAB in
   lab1)
     mainclass="Parse.Main"
     ;;
@@ -29,14 +29,14 @@ case $COMP465LAB in
     redir=0
     ;;
   *)
-    echo "it looks like your environment isn't setup correctly, run install.sh and setup465.sh to reset it."
+    echo "it looks like your environment isn't setup correctly, run install.sh and setup362.sh to reset it."
     exit 1
     ;;
 esac
 
 
 cd $labroot
-echo "running regression tests for comp465-$COMP465LAB"
+echo "running regression tests for comp362-$COMP362LAB"
 
 # check if reference output exists
 if [ ! -d $labroot/output/ref ]; then
@@ -75,10 +75,10 @@ if [ ! -d $labroot/output/ref ]; then
   fi
 fi
 
-echo "compiling $COMP465LAB implementation"
+echo "compiling $COMP362LAB implementation"
 /usr/bin/make
 
-echo "generating $COMP465LAB compiler output"
+echo "generating $COMP362LAB compiler output"
 # make my output directory
 /bin/mkdir -p $labroot/output/mine
 
@@ -109,7 +109,7 @@ else
   mv $toolroot/testcases/queens.s $labroot/output/mine/queens.tig
 fi
 
-echo "comparing $COMP465LAB output against reference compiler"
+echo "comparing $COMP362LAB output against reference compiler"
 cd $labroot/output/ref
 for i in {1..49}
 do

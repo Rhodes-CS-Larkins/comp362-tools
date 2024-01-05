@@ -7,16 +7,16 @@ fi
 
 usage() {
   /bin/cat << EOT
-usage: setup465.sh [ 1 | 2 | 3 | 4 | 5 | 6 ]
-   ex: "\$ setup465.sh 4" configures environment for lab 4
+usage: setup362.sh [ 1 | 2 | 3 | 4 | 5 | 6 ]
+   ex: "\$ setup362.sh 4" configures environment for lab 4
 EOT
 }
 
 # check to see if installer has been run
-egrep "COMP465LAB" $bashrc 2>&1 > /dev/null
+egrep "COMP362LAB" $bashrc 2>&1 > /dev/null
 if [ $? -ne 0 ]; then
   # not found
-  echo "it looks like your COMP 465 environment isn't setup yet. please run install.sh first"
+  echo "it looks like your COMP 362 environment isn't setup yet. please run install.sh first"
   exit 0
 fi
 
@@ -56,8 +56,8 @@ esac
 /bin/cp $bashrc $bashrc.backup
 
 # update with new lab number
-sed -e "s/COMP465LAB=lab[1-6]/COMP465LAB=$lab/" < $bashrc > /tmp/setup465.$$
-/bin/mv /tmp/setup465.$$ $bashrc
+sed -e "s/COMP362LAB=lab[1-6]/COMP362LAB=$lab/" < $bashrc > /tmp/setup362.$$
+/bin/mv /tmp/setup362.$$ $bashrc
 
 # remind user to refresh environment settings
 echo "setup complete. you need to update your environment with the new settings. pick one:"
