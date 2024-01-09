@@ -1,4 +1,4 @@
-# comp465-tools
+# comp362-tools
 Support files for COMP 362 Compiler projects
 
 This repository has some important tools for your compiler implementation projects:
