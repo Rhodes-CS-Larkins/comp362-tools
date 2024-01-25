@@ -1,13 +1,19 @@
 #!/bin/bash
 
 curdir=`pwd`
-toolroot=`echo $curdir | sed -e "s!/bin!!"`
+curpath=`echo $curdir | sed -e "s!/bin!!"`
+
+if [[ $curpath = *${HOME}* ]]; then
+  toolroot=\$HOME${curpath#$HOME}
+else
+  toolroot=$curpath
+fi
+
 if [ "$SHELL" = "/bin/bash" ]; then
   bashrc=$HOME/.bashrc
 else
   bashrc=$HOME/.zshrc
 fi
-
 
 # make backup
 if [ -f $bashrc ]; then
